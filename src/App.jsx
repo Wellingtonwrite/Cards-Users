@@ -12,10 +12,11 @@ function App() {
     const [infoUpdate, setInfoUpdate] = useState()
     const [isModal, setIsModal] = useState(false)
 
-    const baseUrl = 'https://users-crud.academlo.tech'
+    const baseUrl = 'https://users-card-dev-cptz.3.us-1.fl0.io';
     const [users, getUsers, createUser, deleteUser, updateUser, getApiPhoto, infoPhoto] = useFetch(baseUrl)
-
+    
     useEffect(() => {
+
         getUsers('/users')
 
     }, [])
@@ -24,6 +25,13 @@ function App() {
         setIsModal(true)
         
     }
+
+    const updateInfoEdit = async () => {
+        
+        setTimeout(() => {
+            getUsers('/users')
+        }, 500);
+    };
 
     return (
         <div className='app'>
@@ -41,6 +49,7 @@ function App() {
                         setInfoUpdate={setInfoUpdate}
                         getApiPhoto={getApiPhoto}
                         setIsModal={setIsModal}
+                        updateInfoEdit={updateInfoEdit}
                     />
                     :
                     ''
@@ -55,6 +64,8 @@ function App() {
                             deleteUser={deleteUser}
                             setInfoUpdate={setInfoUpdate}
                             infoPhoto={infoPhoto}
+                            setIsModal={setIsModal}
+                            
                         />
                     ))
                 }

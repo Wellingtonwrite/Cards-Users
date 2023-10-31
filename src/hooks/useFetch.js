@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const useFetch = (baseUrl) => {
     const [infoApi, setInfoApi] = useState()
-    
+
 
 
     //READ
@@ -16,19 +16,10 @@ const useFetch = (baseUrl) => {
 
     //create
     const postApi = (path, data) => {
-        const { gender } = data
-        const urlPhoto = `https://randomuser.me/api/?gender=${gender}`; 
 
         const url = `${baseUrl}${path}/`;
-
-        axios.get(urlPhoto)
-            .then((res) => {
-                const image_url = res.data.results[0].picture.large;               
-                data.image_url = image_url;
-                axios.post(url, data)
-                    .then((res) => setInfoApi([...infoApi, res.data]))
-                    .catch((err) => console.log(err));
-            })
+        axios.post(url, data)
+            .then((res) => setInfoApi(res.data))
             .catch((err) => console.log(err));
     };
 
@@ -45,21 +36,12 @@ const useFetch = (baseUrl) => {
 
     //update
     const updateApi = (path, id, data) => {
-        const { gender } = data
-        const urlPhoto = `https://randomuser.me/api/?gender=${gender}`; 
 
         const url = `${baseUrl}${path}/${id}/`
-            axios.get(urlPhoto)
-            .then((res) => {
-                const image_url = res.data.results[0].picture.large;               
-                data.image_url = image_url;
-                axios.put(url, data)
-                    .then((res) => setInfoApi(infoApi.map(e => e.id === id ? res.data : e)))
-                    .catch((err) => console.log(err));
-            })
+        axios.put(url, data)
+            .then((res) => console.log(res))
             .catch((err) => console.log(err));
     }
-
     return [infoApi, getApi, postApi, deleteApi, updateApi]
 }
 export default useFetch

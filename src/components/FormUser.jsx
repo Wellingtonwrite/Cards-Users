@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 
-const FormUser = ({ createUser, infoUpdate, updateUser, setInfoUpdate, setIsModal}) => {
+const FormUser = ({ createUser, infoUpdate, updateUser, setInfoUpdate, setIsModal, updateInfoEdit}) => {
 
     const { handleSubmit, register, reset, formState: { errors } } = useForm()
 
@@ -18,6 +18,8 @@ const FormUser = ({ createUser, infoUpdate, updateUser, setInfoUpdate, setIsModa
             updateUser('/users', infoUpdate.id, data)
             setInfoUpdate()
             setIsModal(false)
+            updateInfoEdit()
+            
         } else {
             // Create
             createUser('/users', data)

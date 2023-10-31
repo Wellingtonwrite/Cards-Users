@@ -1,7 +1,7 @@
 
 
 
-const UserCard = ({ user, deleteUser, setInfoUpdate }) => {
+const UserCard = ({ user, deleteUser, setInfoUpdate, setIsModal }) => {
 
 
 
@@ -12,7 +12,8 @@ const UserCard = ({ user, deleteUser, setInfoUpdate }) => {
 
 
     const handleEdit = () => {
-        setInfoUpdate(user)
+        setInfoUpdate (user)
+        setIsModal(true)
     }
 
     return (
