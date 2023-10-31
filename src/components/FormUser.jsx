@@ -24,7 +24,7 @@ const FormUser = ({ createUser, infoUpdate, updateUser, setInfoUpdate, setIsModa
             // Create
             createUser('/users', data)
             setIsModal(false)
-            
+            updateInfoEdit()
             
             
         }

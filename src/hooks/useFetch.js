@@ -19,7 +19,7 @@ const useFetch = (baseUrl) => {
 
         const url = `${baseUrl}${path}/`;
         axios.post(url, data)
-            .then((res) => setInfoApi(res.data))
+            .then((res) => console.log(res.data))
             .catch((err) => console.log(err));
     };
 
